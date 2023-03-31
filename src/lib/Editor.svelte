@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Cursor from "./Cursor.svelte";
+
   import { mode, Mode } from "../stores/mode";
   import { current, shftPressed } from "../stores/keyboard";
 
@@ -178,7 +180,7 @@
 </script>
 
 <div class="editor">
-  <div class="editor__cursor" style="--y: {posLine}; --x: {posChar}" />
+  <Cursor line={posLine} char={posChar} focus={true} />
   <div class="editor__lines">
     {#each lines as line}
       <div class="editor__line">{line}</div>
@@ -188,8 +190,8 @@
 
 <style lang="scss">
   .editor {
-    $height: 14px;
-    $multiplier: 1.5;
+    $font-size: var(--font-size);
+    $line-height: var(--line-height);
 
     position: relative;
     height: 100%;
@@ -202,22 +204,9 @@
     &__line {
       white-space: pre;
       font-family: monospace;
-      font-size: $height;
-      line-height: $height * $multiplier;
-      min-height: $height * $multiplier;
-    }
-
-    &__cursor {
-      $calc-height: $height * $multiplier;
-
-      position: absolute;
-      top: calc($calc-height * var(--y));
-      left: calc((1ch - 1px) * var(--x));
-
-      width: 1ch;
-      height: $height * $multiplier;
-      background-color: white;
-      opacity: .3;
+      font-size: $font-size;
+      line-height: $line-height;
+      min-height: $line-height;
     }
   }
 </style>
