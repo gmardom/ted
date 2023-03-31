@@ -12,3 +12,11 @@ body {
 
   height: 100%;
 }
+
+:root {
+  $size: 1rem;
+  $height: $size * 1.5;
+
+  --font-size: #{$size};
+  --line-height: #{$height};
+}
