@@ -176,6 +176,22 @@
           cursorMoveRight(false);
           break;
         }
+        case "arrowleft": {
+          cursorMoveLeft(false);
+          break;
+        }
+        case "arrowright": {
+          cursorMoveRight(false);
+          break;
+        }
+        case "arrowup": {
+          cursorMoveUp();
+          break;
+        }
+        case "arrowdown": {
+          cursorMoveDown();
+          break;
+        }
       }
     }
 
