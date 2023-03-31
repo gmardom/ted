@@ -5,7 +5,7 @@
 
 <div id="modeline">
   <div class="left">
-    <div class="module" id="mode">{$mode}</div>
+    <div class="module" id="mode">{$mode.toUpperCase()}</div>
   </div>
 
   <div class="right">
@@ -15,9 +15,16 @@
 
 <style lang="scss">
   #modeline {
+    $font-size: var(--font-size);
+    $line-height: var(--line-height);
+
     background-color: #181818;
     color: white;
     font-family: monospace;
+
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+    min-height: var(--line-height);
 
     display: flex;
     flex-direction: row;
@@ -25,7 +32,7 @@
   }
 
   .module {
-    background-color: red;
-    padding: .1em .3rem;
+    background-color: rgba(red, .25);
+    padding: .1em .5em;
   }
 </style>
