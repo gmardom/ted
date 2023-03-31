@@ -2,10 +2,12 @@
   export let line: number = 0;
   export let char: number = 0;
   export let focus: boolean = false;
+  export let typing: boolean = false;
 </script>
 
 <div
   class:focus={focus}
+  class:typing={typing}
   style="--x:{char};--y:{line};"
 />
 
@@ -27,7 +29,9 @@
 
     &.focus {
       background-color: white;
+    }
 
+    &.focus:not(.typing) {
       animation-name: blink;
       animation-duration: 1s;
       animation-iteration-count: infinite;
@@ -37,6 +41,6 @@
 
   @keyframes blink {
     0% { opacity: 0; }
-    100% { opacity: .75; }
+    100% { opacity: 1; } 
   }
 </style>

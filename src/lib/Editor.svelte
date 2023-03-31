@@ -7,6 +7,9 @@
   let lines: string[] = [""];
   let posLine: number = 0;
   let posChar: number = 0;
+
+  let typing: boolean = false;
+  let typingTimer;
   
   function isEndOfLine(): boolean {
     return posChar == lines[posLine].length;
@@ -175,12 +178,16 @@
         }
       }
     }
+
+    typing = true;
+    clearInterval(typingTimer);
+    typingTimer = setTimeout(() => typing = false, 1000);
   });
 
 </script>
 
 <div class="editor">
-  <Cursor line={posLine} char={posChar} focus={true} />
+  <Cursor line={posLine} char={posChar} focus={true} {typing} />
   <div class="editor__lines">
     {#each lines as line}
       <div class="editor__line">{line}</div>
