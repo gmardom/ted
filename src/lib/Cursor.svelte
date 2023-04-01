@@ -2,7 +2,17 @@
   export let line: number = 0;
   export let char: number = 0;
   export let focus: boolean = false;
-  export let typing: boolean = false;
+
+  import { current } from "../stores/keyboard";
+
+  let typing: boolean = false;
+  let typingTimeout: NodeJS.Timeout;
+
+  current.subscribe(() => {
+    typing = true;
+    clearInterval(typingTimeout);
+    typingTimeout = setTimeout(() => typing = false, 1000);
+  });
 </script>
 
 <div
@@ -41,6 +51,6 @@
 
   @keyframes blink {
     0% { opacity: 0; }
-    100% { opacity: 1; } 
+    100% { opacity: 1; }
   }
 </style>
