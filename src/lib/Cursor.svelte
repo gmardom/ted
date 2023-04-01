@@ -3,12 +3,12 @@
   export let char: number = 0;
   export let focus: boolean = false;
 
-  import { current } from "../stores/keyboard";
+  import { currentKey } from "../stores/keys";
 
   let typing: boolean = false;
   let typingTimeout: NodeJS.Timeout;
 
-  current.subscribe(() => {
+  currentKey.subscribe(() => {
     typing = true;
     clearInterval(typingTimeout);
     typingTimeout = setTimeout(() => typing = false, 1000);

@@ -2,7 +2,7 @@
   import Cursor from "./Cursor.svelte";
 
   import { mode, Mode } from "../stores/mode";
-  import { current, shftPressed } from "../stores/keyboard";
+  import { currentKey, shftPressed } from "../stores/keys";
 
   let lines: string[] = [""];
   let posLine: number = 0;
@@ -110,8 +110,7 @@
     }
   }
 
-  current.subscribe((key) => {
-    if (key.down == false) { return; }
+  currentKey.subscribe((key) => {
     if ($mode == Mode.Insert) {
       switch (key.key) {
         case "escape": {
